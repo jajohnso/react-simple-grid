@@ -1,0 +1,96 @@
+/* ---------------------------------------------------------------------
+Grid
+------------------------------------------------------------------------ */
+@import "../../styles/globalVars";
+//
+// configurable grid variables
+//
+
+$GUTTER: 20px;
+$COLUMNS: 12;
+
+.grid {
+    align-content: flex-start;
+    align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+/*
+Grid Extensions and Mixins
+*/
+
+.grid__col {
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.grid--gutter {
+    margin-left: -$GUTTER;
+    margin-top: -$GUTTER;
+
+    & > .grid__col {
+        padding-left: $GUTTER;
+        padding-top: $GUTTER;
+    }
+}
+
+.grid--align-bottom {
+    align-items: flex-end;
+}
+
+.grid--align-center {
+    align-items: center;
+}
+
+.grid--justify-right {
+    justify-content: flex-end;
+}
+
+.grid--justify-center {
+    justify-content: center;
+}
+
+.grid--noWrap {
+    flex-wrap: nowrap;
+    overflow: auto;
+}
+
+// set up the grid__col widths
+@for $i from 1 through $COLUMNS {
+    .grid__col--#{$i}of#{$COLUMNS} {
+        // (current number of columns / total columns) * 100%
+        width: ($i / $COLUMNS) * 100%;
+    }
+}
+
+@include breakpoint("sm") {
+    // set up the grid__col widths
+    @for $i from 1 through $COLUMNS {
+        .grid__col--#{$i}of#{$COLUMNS}SM {
+            // (current number of columns / total columns) * 100%
+            width: ($i / $COLUMNS) * 100%;
+        }
+    }
+}
+
+@include breakpoint("md") {
+    // set up the grid__col widths
+    @for $i from 1 through $COLUMNS {
+        .grid__col--#{$i}of#{$COLUMNS}MD {
+            // (current number of columns / total columns) * 100%
+            width: ($i / $COLUMNS) * 100%;
+        }
+    }
+}
+
+@include breakpoint("lg") {
+    // set up the grid__col widths
+    @for $i from 1 through $COLUMNS {
+        .grid__col--#{$i}of#{$COLUMNS}LG {
+            // (current number of columns / total columns) * 100%
+            width: ($i / $COLUMNS) * 100%;
+        }
+    }
+}
